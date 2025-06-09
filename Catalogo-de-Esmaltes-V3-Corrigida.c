@@ -12,6 +12,83 @@ typedef struct{
    float preco;
 } Esmalte;
 
+void salvarEsmalte(Esmalte catalogo[], int total);
+
+int carregarEsmaltes(Esmalte catalogo[]);
+
+void adicionarEsmalte(Esmalte catalogo[], int *total);
+
+void listarEsmaltes(Esmalte catalogo[], int total);
+
+void buscarPorCor(Esmalte catalogo[], int total);
+
+void buscarPorMarca(Esmalte catalogo[], int total);
+
+void buscarPorPreco(Esmalte catalogo[], int total);
+
+void editarEsmalte(Esmalte catalogo[], int total);
+
+void excluirEsmalte(Esmalte catalogo[], int *total);
+
+int main(){
+
+   Esmalte catalogo[MAX_ESMALTES];
+   int totalEsmaltes = carregarEsmaltes(catalogo);
+   int opcao;
+   
+   do{
+      printf("\n====| Catálogo de Esmaltes |====\n");
+      printf("[1]. Adicionar esmalte\n");
+      printf("[2]. Listar esmaltes\n");
+      printf("[3]. Buscar por cor\n");
+      printf("[4]. Buscar por marca\n");
+      printf("[5]. Buscar por faixa de preço\n");
+      printf("[6]. Editar esmalte\n");
+      printf("[7]. Excluir esmalte\n");
+      printf("[0]. Sair\n");
+      printf("Escolha: ");
+      scanf("%d", &opcao);
+      
+      switch (opcao) {
+
+         case 0:
+            printf("Encerrando programa...\n");
+            break;
+
+         case 1:
+            adicionarEsmalte(catalogo, &totalEsmaltes);
+            break;
+
+         case 2:
+            listarEsmaltes(catalogo, totalEsmaltes);
+            break;
+      
+         case 3:
+            buscarPorCor(catalogo, totalEsmaltes);
+            break;
+      
+         case 4:
+            buscarPorMarca(catalogo, totalEsmaltes);
+            break;
+      
+         case 5:
+            buscarPorPreco(catalogo, totalEsmaltes);
+            break;
+      
+         case 6:
+            editarEsmalte(catalogo, totalEsmaltes);
+            break;
+   
+         case 7:
+            excluirEsmalte(catalogo, &totalEsmaltes);
+            break;
+         
+         default:
+            printf("Opção inválida! Tente novamente!");
+      }
+   } while(opcao != 0);
+   return 0;
+}
 void salvarEsmalte(Esmalte catalogo[], int total) {
    FILE *fp = fopen (ARQUIVO, "w");
    if (fp == NULL){
@@ -27,7 +104,6 @@ void salvarEsmalte(Esmalte catalogo[], int total) {
       catalogo[i].preco);
    } fclose(fp);
 }
-
 int carregarEsmaltes(Esmalte catalogo[]) {
    FILE *fp = fopen(ARQUIVO, "r");
    if(fp == NULL)return 0;
@@ -45,7 +121,6 @@ int carregarEsmaltes(Esmalte catalogo[]) {
       fclose(fp);
       return total;
 }
-
 void adicionarEsmalte(Esmalte catalogo[], int *total) {
    if (*total >= MAX_ESMALTES) {
       printf("Catalogo cheio!\n");
@@ -199,7 +274,6 @@ void editarEsmalte(Esmalte catalogo[], int total) {
         }
     }
 }
-
 void excluirEsmalte(Esmalte catalogo[], int *total) {
     int id, i, encontrados = 0;
     
@@ -213,7 +287,7 @@ void excluirEsmalte(Esmalte catalogo[], int *total) {
         }
     }    
     if(!encontrados) {
-        printf("O ID: %d não foi localizado no catálogo.\n");
+        printf("O ID: %d não foi localizado no catálogo.\n", id);
         return;
     }
     for(int j = i; j < *total - 1; j++){
@@ -226,54 +300,6 @@ void excluirEsmalte(Esmalte catalogo[], int *total) {
         catalogo[k].id = k + 1;
     }
     salvarEsmalte(catalogo, *total);
-    printf("Esmalte excluído com sucesso!\n", id);
+    printf("Esmalte de id: %d excluído com sucesso!\n", id);
     return;
-}
-int main(){
-   Esmalte catalogo[MAX_ESMALTES];
-   int totalEsmaltes = carregarEsmaltes(catalogo);
-   int opcao;
-   
-   do{
-      printf("\n====| Catálogo de Esmaltes |====\n");
-      printf("[1]. Adicionar esmalte\n");
-      printf("[2]. Listar esmaltes\n");
-      printf("[3]. Buscar por cor\n");
-      printf("[4]. Buscar por marca\n");
-      printf("[5]. Buscar por faixa de preço\n");
-      printf("[6]. Editar esmalte\n");
-      printf("[7]. Excluir esmalte\n");
-      printf("[0]. Sair\n");
-      printf("Escolha: ");
-      scanf("%d", &opcao);
-      
-      if (opcao == 0) {
-          printf("Encerrando programa...\n");
-      }
-      else if (opcao == 1) {
-          adicionarEsmalte(catalogo, &totalEsmaltes);
-      }
-      else if(opcao == 2) {
-          listarEsmaltes(catalogo, totalEsmaltes);
-      }
-      else if(opcao == 3) {
-          buscarPorCor(catalogo, totalEsmaltes);
-      }
-      else if(opcao == 4) {
-          buscarPorMarca(catalogo, totalEsmaltes);
-      }
-      else if(opcao == 5) {
-          buscarPorPreco(catalogo, totalEsmaltes);
-      }
-      else if(opcao == 6) {
-          editarEsmalte(catalogo, totalEsmaltes);
-      }
-      else if(opcao == 7) {
-          excluirEsmalte(catalogo, &totalEsmaltes);
-      }
-      else {
-          printf("Opção inválida! Tente novamente!");
-      }
-   } while(opcao != 0);
-   return 0;
 }
