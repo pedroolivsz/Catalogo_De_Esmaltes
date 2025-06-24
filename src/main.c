@@ -14,6 +14,15 @@ int main() {
         printf("2. Listar esmaltes.\n");
         printf("===== Escolha uma opção: ");
         scanf("%d", &escolha);
+
+        switch(escolha) {
+            case 1:
+                cadastrarEsmalte(catalogo, &quantidade_total);
+                break;
+            case 2:
+                listarEsmaltes(catalogo, quantidade_total);
+                break;
+        }
     }while(escolha!=0);
-    
+    return 0;
 }

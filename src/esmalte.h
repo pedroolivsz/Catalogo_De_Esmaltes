@@ -11,8 +11,7 @@ typedef struct{
     float preco;
     int quantidade;
 } Esmalte;
-
-void cadastrarEsmalte(Esmalte catalogo[], int *total);
-void listarEsmaltes(Esmalte catalogo[], int total);
+void cadastrarEsmalte(Esmalte catalogo[], int *quantidade_total);
+void listarEsmaltes(Esmalte catalogo[], int quantidade_total);
 
 #endif
