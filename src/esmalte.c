@@ -35,7 +35,7 @@ void cadastrarEsmalte(Esmalte catalogo[], int *quantidade_total) {
 
     do{
         printf("Preço: ");
-        scanf("%d", &catalogo[*quantidade_total].preco);
+        scanf("%f", &catalogo[*quantidade_total].preco);
 
         if(catalogo[*quantidade_total].preco < 0) {
             printf("Preço inválido. Tente novamente\n");
