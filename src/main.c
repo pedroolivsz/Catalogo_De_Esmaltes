@@ -24,7 +24,7 @@ int main() {
                 listarEsmaltes(catalogo, quantidade_total);
                 break;
             case 3:
-                editarEsmalte(catalogo,quantidade_total);
+                editarEsmalte(catalogo, quantidade_total);
                 break;
             case 0:
                 printf("Encerrando operações...\n");

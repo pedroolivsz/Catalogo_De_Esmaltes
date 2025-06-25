@@ -87,7 +87,7 @@ void listarEsmaltes(Esmalte catalogo[], int quantidade_total) {
     }
     return;
 }
-void editarEmalte(Esmalte catalogo[], int quantidade_total) {
+void editarEsmalte(Esmalte catalogo[], int quantidade_total) {
     int id;
     int search_id;
     int edit_id;
@@ -96,7 +96,7 @@ void editarEmalte(Esmalte catalogo[], int quantidade_total) {
     scanf("%d", &id);
 
     for(search_id=0; search_id<quantidade_total; search_id++) {
-        if(search_id == id) {
+        if(catalogo[search_id].id == id) {
             encontrado = 1;
             edit_id = search_id;
             break;
