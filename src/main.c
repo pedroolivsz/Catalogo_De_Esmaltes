@@ -12,6 +12,7 @@ int main() {
         printf("===== Menu =====\n");
         printf("1. Adicionar esmalte ao catálogo.\n");
         printf("2. Listar esmaltes.\n");
+        printf("3. Editar esmalte.\n");
         printf("===== Escolha uma opção: ");
         scanf("%d", &escolha);
 
@@ -21,6 +22,15 @@ int main() {
                 break;
             case 2:
                 listarEsmaltes(catalogo, quantidade_total);
+                break;
+            case 3:
+                editarEsmalte(catalogo,quantidade_total);
+                break;
+            case 0:
+                printf("Encerrando operações...\n");
+                break;
+            default:
+                printf("Opção invalida! Tente novamente.\n");
                 break;
         }
     }while(escolha!=0);

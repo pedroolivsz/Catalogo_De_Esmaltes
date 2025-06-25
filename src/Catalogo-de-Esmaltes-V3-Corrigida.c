@@ -16,9 +16,9 @@ void salvarEsmalte(Esmalte catalogo[], int total);
 
 int carregarEsmaltes(Esmalte catalogo[]);
 
-void adicionarEsmalte(Esmalte catalogo[], int *total);
+void adicionarEsmalte(Esmalte catalogo[], int *total); //Ja foi
 
-void listarEsmaltes(Esmalte catalogo[], int total);
+void listarEsmaltes(Esmalte catalogo[], int total); // Ja foi
 
 void buscarPorCor(Esmalte catalogo[], int total);
 

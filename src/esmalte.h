@@ -13,5 +13,6 @@ typedef struct{
 } Esmalte;
 void cadastrarEsmalte(Esmalte catalogo[], int *quantidade_total);
 void listarEsmaltes(Esmalte catalogo[], int quantidade_total);
+void editarEsmalte(Esmalte catalogo[], int quantidade_total);
 
 #endif
